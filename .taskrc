@@ -1,0 +1,41 @@
+# Taskwarrior 3.x — config de Leo
+# Doc: https://taskwarrior.org/docs/   |   Recharger : rien à faire, lu à chaque appel
+# Data (SQLite) : ~/.local/share/task/taskchampion.sqlite3
+
+# ─── Emplacement des données (défaut TW3, explicite pour clarté) ───
+data.location=~/.local/share/task
+
+# ─── Thème : vert sur noir, raccord ghostty/tmux "terminal pur" ───
+include /home/leoinnocenzi/.local/share/doc/task/rc/dark-green-256.theme
+
+# Accent néon (#39ff14 ≈ color46 du cube 256) pour les éléments clés
+color.active=color46
+color.due.today=color46
+color.tag.next=bold color46
+color.overdue=bold color196
+
+# ─── Jours fériés FR (pour la vue calendar) ───
+include /home/leoinnocenzi/.local/share/doc/task/rc/holidays.fr-FR.rc
+
+# ─── Comportement ───
+# Pas de confirmation sur chaque modif de masse (garde-la pour delete via hook si besoin)
+confirmation=yes
+# Semaine commence lundi
+weekstart=monday
+# Format dates : ISO court
+dateformat=Y-M-D
+dateformat.report=Y-M-D
+# Urgence : pondère l'âge pour que les vieilles tâches remontent
+urgency.age.max=200
+
+# ─── Rapports : 'next' plus dense ───
+report.next.columns=id,start.age,entry.age,depends.indicator,priority,project,tags,recur.indicator,scheduled.countdown,due.relative,until.remaining,description.count,urgency
+report.next.labels=ID,Active,Age,D,P,Project,Tags,R,S,Due,Until,Description,Urg
+
+# ─── Contextes (exemples — actifs via : task context <nom>) ───
+# context.work.read=project:work
+# context.perso.read=project:perso
+
+# ─── Édition ───
+editor=nvim
+news.version=3.4.2

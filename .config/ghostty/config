@@ -1,0 +1,94 @@
+# This is the configuration file for Ghostty.
+#
+# This template file has been automatically created at the following
+# path since Ghostty couldn't find any existing config files on your system:
+#
+#   /home/leoinnocenzi/.config/ghostty/config
+#
+# The template does not set any default options, since Ghostty ships
+# with sensible defaults for all options. Users should only need to set
+# options that they want to change from the default.
+#
+# Run `ghostty +show-config --default --docs` to view a list of
+# all available config options and their default values.
+#
+# Additionally, each config option is also explained in detail
+# on Ghostty's website, at https://ghostty.org/docs/config.
+#
+# Ghostty can reload the configuration while running by using the menu
+# options or the bound key (default: Command + Shift + comma on macOS and
+# Control + Shift + comma on other platforms). Not all config options can be
+# reloaded while running; some only apply to new windows and others may require
+# a full restart to take effect.
+
+# Config syntax crash course
+# ==========================
+# # The config file consists of simple key-value pairs,
+# # separated by equals signs.
+# font-family = Iosevka
+# window-padding-x = 2
+#
+# # Spacing around the equals sign does not matter.
+# # All of these are identical:
+# key=value
+# key= value
+# key =value
+# key = value
+#
+# # Any line beginning with a # is a comment. It's not possible to put
+# # a comment after a config option, since it would be interpreted as a
+# # part of the value. For example, this will have a value of "#123abc":
+# background = #123abc
+#
+# # Empty values are used to reset config keys to default.
+# key =
+#
+# # Some config options have unique syntaxes for their value,
+# # which is explained in the docs for that config option.
+# # Just for example:
+# resize-overlay-duration = 4s 200ms
+keybind = shift+enter=text:\x1b\r
+
+# ─── Police : JetBrains Mono (défaut Ghostty, on ne change rien) ───
+# font-family =          ← décommenté = police système par défaut
+font-size = 13
+
+# ─── Thème "terminal pur" (vert sur noir, pas de couleurs candy) ───
+background = 0d1117
+foreground = b5c9a8
+cursor-color = 39ff14
+selection-background = 1f3a1f
+selection-foreground = d4f0c0
+
+# Palette ANSI — override des 16 couleurs de base
+palette = 0=#0d1117
+palette = 1=#e06c75
+palette = 2=#4caf50
+palette = 3=#e5c07b
+palette = 4=#61afef
+palette = 5=#c678dd
+palette = 6=#56b6c2
+palette = 7=#b5c9a8
+palette = 8=#3d4451
+palette = 9=#e06c75
+palette = 10=#39ff14
+palette = 11=#e5c07b
+palette = 12=#61afef
+palette = 13=#c678dd
+palette = 14=#56b6c2
+palette = 15=#ffffff
+
+# ─── Comportement ───
+shell-integration = zsh
+mouse-hide-while-typing = true
+scrollback-limit = 100000
+confirm-close-surface = false
+
+# ─── Démarrage auto : tmux = multiplexeur principal ───
+# herdr vit dans UN seul pane tmux (prefix+g), pas partout.
+command = /home/leoinnocenzi/.config/ghostty/tmux-start.sh
+# Pour revenir à herdr-partout : commenter ci-dessus, décommenter celle-ci
+# command = /home/leoinnocenzi/.config/ghostty/herdr-start.sh
+
+# ─── Raccourcis (optionnel si tu utilises tmux pour tout) ───
+keybind = ctrl+shift+w=close_window

@@ -1,0 +1,94 @@
+# herdr configuration — mirrors leo's ghostty + tmux setup
+# Reload after edits:  herdr server reload-config   (or prefix+shift+r in-app)
+
+onboarding = false
+
+# ─── Theme: "terminal pur" — green on black, no candy ───
+[theme]
+name = "terminal"
+
+[theme.custom]
+panel_bg = "#0d1117"
+accent   = "#39ff14"
+green    = "#4caf50"
+red      = "#e06c75"
+
+# ─── Terminal panes ───
+[terminal]
+# Empty = $SHELL then /bin/sh
+default_shell = ""
+shell_mode = "auto"
+# New panes/tabs/workspaces inherit the source CWD (matches tmux -c "#{pane_current_path}")
+new_cwd = "follow"
+
+[update]
+channel = "stable"
+
+# ─── Keys: ctrl+b prefix (herdr tourne DANS tmux ; tmux garde ctrl+a) ───
+# Nesting: tmux = prefix ctrl+a (externe), herdr = ctrl+b (interne).
+# Sinon ctrl+a serait avalé par tmux avant d'atteindre herdr.
+# (ctrl+b = ancien défaut tmux, libre ici. PAS ctrl+s : ctrl+s = XOFF/freeze terminal.)
+[keys]
+prefix = "ctrl+b"
+
+# Vim-like pane focus (identical to your tmux h/j/k/l)
+focus_pane_left  = "prefix+h"
+focus_pane_down  = "prefix+j"
+focus_pane_up    = "prefix+k"
+focus_pane_right = "prefix+l"
+
+# Splits: prefix+- stacks (matches tmux '-'); prefix+| side-by-side (matches tmux '|')
+split_horizontal = "prefix+minus"
+split_vertical   = "prefix+|"
+
+# Tabs ≈ tmux windows
+new_tab      = "prefix+c"
+next_tab     = "prefix+n"
+previous_tab = "prefix+p"
+switch_tab   = "prefix+1..9"
+close_tab    = "prefix+shift+x"
+rename_tab   = "prefix+shift+t"
+
+# Panes
+close_pane = "prefix+x"
+zoom       = "prefix+z"
+resize_mode = "prefix+r"
+cycle_pane_next     = "prefix+tab"
+cycle_pane_previous = "prefix+shift+tab"
+
+# Session / config
+detach        = "prefix+q"
+reload_config = "prefix+shift+r"
+help          = "prefix+?"
+
+# Navigate-mode movement (vi-style, matches mode-keys vi)
+navigate_pane_left  = "h"
+navigate_pane_down  = "j"
+navigate_pane_up    = "k"
+navigate_pane_right = "l"
+
+# ─── UI ───
+[ui]
+accent = "#39ff14"
+mouse_capture = true
+confirm_close = true
+
+# Reactive background notifications
+agent_panel_scope = "all"
+[ui.toast]
+delivery = "herdr"
+
+[ui.sound]
+enabled = true
+
+# ─── Sessions: resume AI agents after server restart ───
+[session]
+resume_agents_on_restore = true
+
+# ─── Scrollback: match ghostty's generous buffer ───
+[advanced]
+scrollback_limit_bytes = 50000000
+
+# herdr tourne DANS un pane tmux → autoriser le nesting.
+# Sinon: "nested herdr is disabled by default" et herdr quitte aussitôt.
+allow_nested = true

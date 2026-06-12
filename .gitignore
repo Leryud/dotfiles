@@ -1,0 +1,11 @@
+# Bruit herdr
+.config/herdr/sessions/
+.config/herdr/*.log
+.config/herdr/release-notes.json
+
+# Sauvegardes locales
+*.bak
+*.original.md
+
+# Données Taskwarrior (jamais commit : SQLite + privé)
+.local/share/task/
