@@ -23,14 +23,17 @@ Terminal setup — green-on-black "terminal pur" stack on elementary OS 8 (Ubunt
 
 ## Install
 
-Symlink into `$HOME` (paths in `.taskrc` / ghostty are absolute for `leoinnocenzi`):
+Tracked files live under `home/` (the stow package). Symlink into `$HOME`
+with GNU stow (paths in `.taskrc` / ghostty are absolute for `leoinnocenzi`):
 
 ```bash
 git clone git@github.com:leryud/dotfiles.git ~/dotfiles
 cd ~/dotfiles
-# manual symlink, or use GNU stow:
-stow -t ~ .
+stow --no-folding -t ~ home
 ```
+
+`--no-folding` = per-file symlinks, real dirs kept (so other files in
+`~/.config/ghostty`, `~/.config/herdr` stay untouched).
 
 Taskwarrior 3.x is built from source → `~/.local/bin/task` (not committed; data lives in `~/.local/share/task/`).
 
