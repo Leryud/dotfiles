@@ -75,6 +75,7 @@ confirm_close = true
 
 # Reactive background notifications
 agent_panel_scope = "all"
+agent_panel_sort = "priority"
 [ui.toast]
 delivery = "herdr"
 
@@ -92,3 +93,14 @@ scrollback_limit_bytes = 50000000
 # herdr tourne DANS un pane tmux → autoriser le nesting.
 # Sinon: "nested herdr is disabled by default" et herdr quitte aussitôt.
 allow_nested = true
+
+# ─── Plugin: herdr-file-viewer ───
+[[keys.command]]
+key = "prefix+f"
+type = "shell"
+command = "herdr plugin action invoke open-file-viewer --plugin herdr-file-viewer"
+
+[[keys.command]]
+key = "prefix+shift+f"
+type = "shell"
+command = "herdr plugin action invoke open-file-viewer-tab --plugin herdr-file-viewer"
