@@ -61,11 +61,23 @@ detach        = "prefix+q"
 reload_config = "prefix+shift+r"
 help          = "prefix+?"
 
+
 # Navigate-mode movement (vi-style, matches mode-keys vi)
 navigate_pane_left  = "h"
 navigate_pane_down  = "j"
 navigate_pane_up    = "k"
 navigate_pane_right = "l"
+
+ # Plugin: herdr-file-viewer
+[[keys.command]]
+key = "prefix+f"
+type = "shell"
+command = "herdr plugin action invoke open-file-viewer --plugin herdr-file-viewer"
+
+[[keys.command]]
+key = "prefix+shift+f"
+type = "shell"
+command = "herdr plugin action invoke open-file-viewer-tab --plugin herdr-file-viewer"
 
 # ─── UI ───
 [ui]
